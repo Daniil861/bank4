@@ -1,0 +1,89 @@
+// Базовые стили спойлеров
+// Сниппет (HTML): spoller
+
+// Блок со спойлерами
+.spollers {
+	display: grid;
+	gap: 20px;
+	.favorite & {
+		gap: 12px;
+	}
+}
+// Спойлер
+.spollers__item {
+	display: flex;
+	flex-direction: column;
+	row-gap: 17px;
+	font-size: 20px;
+	.favorite & {
+		row-gap: 12px;
+	}
+}
+// Заголовок спойлера
+.spollers__title {
+	position: relative;
+	width: 100%;
+	cursor: default;
+	text-align: left;
+
+	font-weight: 800;
+	font-size: 21px;
+	line-height: math.div(26, 21);
+
+	color: #383838;
+	._spoller-init & {
+		cursor: pointer;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			right: 10px;
+			top: 50%;
+			background-color: #000;
+			height: 2px;
+			width: 15px;
+			transition: transform 0.5s ease 0s;
+		}
+		&::before {
+			transform: translateX(-75%) rotate(-40deg);
+		}
+		&::after {
+			transform: rotate(40deg);
+		}
+
+		&._spoller-active {
+			&::before {
+				transform: translate(-75%, -50%) rotate(40deg);
+			}
+			&::after {
+				transform: translate(0, -50%) rotate(-40deg);
+			}
+		}
+	}
+	.favorite & {
+		font-weight: 700;
+		font-size: 15px;
+		line-height: math.div(18, 15);
+
+		color: #383838;
+	}
+	&:active {
+		transform: translateY(0) !important;
+	}
+}
+.spollers__empty {
+	font-weight: 500;
+	font-size: 15px;
+	line-height: math.div(18, 15);
+
+	color: #a6afb3;
+	._hide-empty & {
+		display: none;
+	}
+}
+// Контент спойлера
+.spollers__body {
+	&._hide-empty {
+		padding-top: 25px;
+	}
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Bank2"
+})
+
+<body>
+	<div class="wrapper">
+		<div class="wrapper__frame frame-wrapper">
+			<div class="frame-wrapper__body">
+				<div class="frame-wrapper__button-box">
+					<button type="button" data-btn="show-iframe"
+						class="frame-wrapper__button button"><span>Назад</span></button>
+				</div>
+				<div class="frame-wrapper__hide-box">
+					<div class="frame-wrapper__modal">
+						<iframe src="https://example.org"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

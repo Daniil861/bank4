@@ -1,0 +1,179 @@
+body::after {
+	content: "";
+	background-color: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	transition: opacity 0.8s ease 0s;
+	pointer-events: none;
+	z-index: 149;
+}
+.popup-show body::after {
+	opacity: 1;
+}
+.popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+
+	transition: all 0.3s ease 0s;
+	visibility: hidden;
+	pointer-events: none;
+	opacity: 0;
+	transform: translateX(100%);
+	background-image: $bgMainColor;
+
+	&_show {
+		z-index: 150;
+		visibility: visible;
+		overflow: auto;
+		pointer-events: auto;
+
+		visibility: visible;
+		opacity: 1;
+		transform: translateX(0);
+
+		&#post-1,
+		&#post-2,
+		&#post-3 {
+			z-index: 155;
+			display: flex;
+		}
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-height: 100%;
+		flex: 1 1 auto;
+		width: 100%;
+	}
+
+	&__header {
+		width: 100%;
+	}
+
+	&__content {
+		transition: all 0.3s ease 0s;
+
+		flex: 1 1 auto;
+
+		display: flex;
+		width: 100%;
+
+		padding-block: 8px 95px;
+		padding-inline: 14px;
+		.lock & {
+			visibility: visible;
+		}
+		#post-1 &,
+		#post-2 &,
+		#post-3 & {
+			padding: 0;
+		}
+		&._p0 {
+			padding-inline: 0;
+		}
+	}
+
+	&__close {
+	}
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: 15px;
+		line-height: math.div(19, 16);
+
+		color: #383838;
+
+		margin-bottom: 10px;
+	}
+
+	&__image {
+		padding-bottom: calc(162 / 324) * 100%;
+		margin-bottom: 18px;
+	}
+
+	&__text {
+		font-weight: 500;
+		font-size: 14px;
+		line-height: math.div(19, 14);
+
+		color: #383838;
+
+		margin-bottom: 15px;
+		p {
+			margin-bottom: 5px;
+		}
+	}
+
+	&__list {
+		li {
+			position: relative;
+			padding-left: 15px;
+
+			&::before {
+				content: ".";
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+			}
+		}
+	}
+
+	&__sub-list {
+		li {
+			position: relative;
+			display: inline-block;
+			padding-left: 15px;
+
+			&::before {
+				content: attr(data-attr);
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				color: #000;
+			}
+		}
+	}
+
+	&__next-list {
+		padding-left: 10px;
+		li {
+			position: relative;
+			display: inline-block;
+			padding-left: 15px;
+
+			&::before {
+				content: attr(data-attr);
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				color: #000;
+			}
+		}
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+		row-gap: 31px;
+
+		padding-bottom: 100px;
+	}
+}
